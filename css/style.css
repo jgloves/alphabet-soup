@@ -4,6 +4,7 @@ body {
 	 font-family: "Gloria Hallelujah";
 	 font-style: normal;
 	 font-weight: 400;
+	 text-align: justify;
 }
 
 p.weight1 {
@@ -42,6 +43,15 @@ h1 {
 	 font-size: 64px;
 	 line-height: 73px;
 	 margin-bottom: 25px;
+	 text-align: center;
+}
+
+h2 {
+     font-size: 1.6em;
+     font-weight:normal;
+     margin: 0 0 15px -1.5px;
+     padding: 0;
+     text-align:center;
 }
 
 p {
