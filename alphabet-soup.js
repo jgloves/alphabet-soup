@@ -16,6 +16,12 @@ function scramble(word) {
         letters.splice(randomIndex, 1)//remove that letter from "letters"
     }
 
+    var c = document.getElementById("screen");
+    var ctx = c.getContext("2d");
+    ctx.beginPath();
+    ctx.arc(636,300,290,0,2*Math.PI);
+    ctx.stroke();
+
     return scrambledLetters;
 
 }
