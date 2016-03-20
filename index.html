@@ -27,17 +27,11 @@
 
       <!-- Canvas element where the game is drawn -->
       <canvas id="screen" width="1272px" height="600px">Your browser does not support HTML5 Canvas :(</canvas>
-        <!--
-      <form>
-        Your guess:
-        <input type="text" id ="guess"><br>
-        <input type="submit" id="submit">
+
+      <form id="guess-form">
+        <input id="guess-input" type="text" placeholder="type your guess here" />
+        <button type="submit" autofocus="true" form="guess-form" name="button">Submit</button>
       </form>
-      -->
-        <form id="guess-form">
-            <input id="guess-input" type="text" placeholder="type your guess here" />
-            <button type="submit" autofocus="true" form="guess-form" name="button">Submit</button>
-        </form>
 
       <!-- Load the code that runs the game -->
       <script src="alphabet-soup.js"></script>

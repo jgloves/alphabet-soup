@@ -29,77 +29,67 @@ ctx.stroke();
 ctx.fillStyle = "darkred";
 ctx.fill();
 
+ctx.font = '70px Gloria Hallelujah';
+ctx.textAlign = 'center';
+ctx.fillStyle = 'wheat';
+
 var x = c.width / 2;
 var y = c.height / 2;
 
 //TODO- load words from file into list, randomize order
 //for now, hard code list
 var words = ["dinosaur", "train", "bicycle", "music"];
+
 var guessInput = document.getElementById("guess-input");
-//var submit = document.getElementById("submit");
-//submit.addEventListener("click", guessValidate);
 
 var guessForm = document.getElementById("guess-form");
+
+//Event listener for submit button
 guessForm.addEventListener("submit", function (e) {
     e = e || event; //workaround for IE
     e.preventDefault();
-    console.log(guessInput.value);
 
-});
-
-//loop through words
-for (var i = 0; i < words.length; i++) {
-    start(i);
-    var flag = false;
-    //TODO - wait until correct submission
-    while (!flag)
-    {
-        flag = guessValidate(words[i]);
-        guess.value("");
+    var guess = guessInput.value;
+    if (guess != words[0]) {
+        alert("That wasn't the word I was thinking of. Please enter another guess.");
+        guessForm.reset();
+    } else {
+        alert("You got it!");
+        guessForm.reset();
     }
 
 
-    //TODO - give positive feedback, reinforcement
-    alert("You got it!");
-}
+    //TODO - get a new word
+
+});
+
+start(0);
+
+
+
 
 function start(index){
 
-  ctx.font = '70px Gloria Hallelujah';
-  ctx.textAlign = 'center';
-  ctx.fillStyle = 'wheat';
+
   ctx.fillText(scramble(words[index]), x, y);
 
 }
 
 function scramble(word) {
 
-    var letters = word.toUpperCase().split("");
-    console.log(letters);
+    var upperWord = word.toUpperCase(); //TODO - I am getting a strange error here : Uncaught TypeError: Cannot read property 'toUpperCase' of undefined
+    var letters = upperWord.split("");
 
     var scrambledLetters = "";
-    for (i = letters.length; i > 0; i--) {
+
+    for (var i = letters.length; i > 0; i--) {
         var randomIndex = Math.floor(Math.random() * (i));
         scrambledLetters += letters[randomIndex]; //add a random letter to "scrambledLetters"
         letters.splice(randomIndex, 1)//remove that letter from "letters"
-        console.log(letters);
     }
 
     return scrambledLetters;
 
 }
 
-function guessValidate(correctGuess)
-{
-    console.log("user clicked submit");
-    var guess = document.getElementById("guess");
-    if (guess.value().toUpperCase() != correctGuess)
-    {
-        alert("That wasn't the word I was thinking of. Please enter another guess.");
-        return false;
-    }
-    else
-    {
-        return true;
-    }
-}
+
