@@ -5,6 +5,7 @@ WebFontConfig = {
   google:{ families: ['Gloria Hallelujah'] },
   active: function(){start();},
 };
+
 (function(){
   var wf = document.createElement("script");
   wf.src = 'https://ajax.googleapis.com/ajax/libs/webfont/1.5.10/webfont.js';
@@ -13,7 +14,6 @@ WebFontConfig = {
 })();
 
 var screen = document.getElementById("screen").getContext("2d");
-
 
 //draw the circle
 var c = document.getElementById("screen");
@@ -35,6 +35,10 @@ ctx.fillStyle = 'wheat';
 
 var x = c.width / 2;
 var y = c.height / 2;
+
+ctx.font = '70px Gloria Hallelujah';
+ctx.textAlign = 'center';
+ctx.fillStyle = 'wheat';
 
 //TODO- load words from file into list, randomize order
 //for now, hard code list
@@ -63,15 +67,13 @@ guessForm.addEventListener("submit", function (e) {
 
 });
 
+
 start(0);
 
 
+function start(){
 
-
-function start(index){
-
-
-  ctx.fillText(scramble(words[index]), x, y);
+  ctx.fillText(scramble(words[0]), x, y);
 
 }
 
