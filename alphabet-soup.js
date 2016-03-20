@@ -28,7 +28,7 @@ ctx.stroke();
 //fill color
 ctx.fillStyle = "darkred";
 ctx.fill();
-
+//font stuff
 ctx.font = '70px Gloria Hallelujah';
 ctx.textAlign = 'center';
 ctx.fillStyle = 'wheat';
@@ -36,9 +36,6 @@ ctx.fillStyle = 'wheat';
 var x = c.width / 2;
 var y = c.height / 2;
 
-ctx.font = '70px Gloria Hallelujah';
-ctx.textAlign = 'center';
-ctx.fillStyle = 'wheat';
 
 //TODO- load words from file into list, randomize order
 //for now, hard code list
@@ -67,13 +64,17 @@ guessForm.addEventListener("submit", function (e) {
 
 });
 
-
+//for (var i; i < words.length; i++) {
+//    start(i);
+//}
 start(0);
 
 
-function start(){
 
-  ctx.fillText(scramble(words[0]), x, y);
+function start(n){
+
+  var text = scramble(words[n]);
+  ctx.fillText(text, x, y);
 
 }
 
