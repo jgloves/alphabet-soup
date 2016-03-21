@@ -2,15 +2,15 @@
 //TODO - ask Khalid if there is another way, and why this works
 // load google font == Gloria Hallelujah
 WebFontConfig = {
-  google:{ families: ['Gloria Hallelujah'] },
-  active: function(){start();},
+    google:{ families: ['Gloria Hallelujah'] },
+    active: function(){start();},
 };
 
 (function(){
-  var wf = document.createElement("script");
-  wf.src = 'https://ajax.googleapis.com/ajax/libs/webfont/1.5.10/webfont.js';
-  wf.async = 'true';
-  document.head.appendChild(wf);
+    var wf = document.createElement("script");
+    wf.src = 'https://ajax.googleapis.com/ajax/libs/webfont/1.5.10/webfont.js';
+    wf.async = 'true';
+    document.head.appendChild(wf);
 })();
 
 var screen = document.getElementById("screen").getContext("2d");
@@ -36,14 +36,11 @@ ctx.fillStyle = 'wheat';
 var x = c.width / 2;
 var y = c.height / 2;
 
-
 //TODO- load words from file into list, randomize order
-//for now, hard code list
 var words = ["dinosaur", "train", "bicycle", "music"];
-
 var guessInput = document.getElementById("guess-input");
-
 var guessForm = document.getElementById("guess-form");
+
 //counter for the list of words
 var counter = 0;
 start(0);
@@ -52,7 +49,6 @@ start(0);
 guessForm.addEventListener("submit", function (e) {
     e = e || event; //workaround for IE
     e.preventDefault();
-
     var guess = guessInput.value;
     if (guess != words[counter]) {
         alert("That wasn't the word I was thinking of. Please enter another guess.");
@@ -66,15 +62,10 @@ guessForm.addEventListener("submit", function (e) {
             ctx.fill();
             start(counter);
         } else {
-            alert("congratulations! you've guessed all the words!");
+            alert("Congratulations! You've guessed all the words!");
         }
-
     }
-
 });
-
-
-
 
 function start(n){
 
@@ -85,20 +76,13 @@ function start(n){
 }
 
 function scramble(word) {
-
     var upperWord = word.toUpperCase(); //TODO - I am getting a strange error here : Uncaught TypeError: Cannot read property 'toUpperCase' of undefined
     var letters = upperWord.split("");
-
     var scrambledLetters = "";
-
     for (var i = letters.length; i > 0; i--) {
         var randomIndex = Math.floor(Math.random() * (i));
         scrambledLetters += letters[randomIndex]; //add a random letter to "scrambledLetters"
-        letters.splice(randomIndex, 1)//remove that letter from "letters"
+        letters.splice(randomIndex, 1); //remove that letter from "letters"
     }
-
     return scrambledLetters;
-
 }
-
-
