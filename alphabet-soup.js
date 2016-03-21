@@ -44,6 +44,9 @@ var words = ["dinosaur", "train", "bicycle", "music"];
 var guessInput = document.getElementById("guess-input");
 
 var guessForm = document.getElementById("guess-form");
+//counter for the list of words
+var counter = 0;
+start(0);
 
 //Event listener for submit button
 guessForm.addEventListener("submit", function (e) {
@@ -51,29 +54,32 @@ guessForm.addEventListener("submit", function (e) {
     e.preventDefault();
 
     var guess = guessInput.value;
-    if (guess != words[0]) {
+    if (guess != words[counter]) {
         alert("That wasn't the word I was thinking of. Please enter another guess.");
         guessForm.reset();
     } else {
         alert("You got it!");
         guessForm.reset();
+        counter++;
+        if (counter < words.length) {
+            ctx.fillStyle = "darkred";
+            ctx.fill();
+            start(counter);
+        } else {
+            alert("congratulations! you've guessed all the words!");
+        }
+
     }
-
-
-    //TODO - get a new word
 
 });
 
-//for (var i; i < words.length; i++) {
-//    start(i);
-//}
-start(0);
 
 
 
 function start(n){
 
   var text = scramble(words[n]);
+  ctx.fillStyle = "wheat";
   ctx.fillText(text, x, y);
 
 }
