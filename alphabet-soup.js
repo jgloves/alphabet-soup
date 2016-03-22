@@ -1,9 +1,7 @@
-
-//TODO - ask Khalid if there is another way, and why this works
 // load google font == Gloria Hallelujah
 WebFontConfig = {
     google:{ families: ['Gloria Hallelujah'] },
-    active: function(){start();},
+    loading: function(){start(0);},
 };
 
 (function(){
@@ -43,7 +41,7 @@ var guessForm = document.getElementById("guess-form");
 
 //counter for the list of words
 var counter = 0;
-start(0);
+//start(0);
 
 //Event listener for submit button
 guessForm.addEventListener("submit", function (e) {
@@ -66,6 +64,10 @@ guessForm.addEventListener("submit", function (e) {
         }
     }
 });
+
+function start() {
+    console.log("starting");
+}
 
 function start(n){
 
