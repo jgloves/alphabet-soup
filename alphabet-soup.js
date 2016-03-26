@@ -34,33 +34,73 @@ ctx.fillStyle = 'wheat';
 var x = c.width / 2;
 var y = c.height / 2;
 
-//TODO- load words from file into list, randomize order
-var words = ["dinosaur", "train", "bicycle", "music"];
 var guessInput = document.getElementById("guess-input");
 var guessForm = document.getElementById("guess-form");
 
+var level1 = {
+                 "words": ["and", "like", "can", "for", "have", "here", "his", "her", "one", "with"],
+                               "message": "You rock!"
+             };
+
+var level2 = {
+                 "words": ["come", "look", "said", "have", "down", "from", "little", "there", "they", "came"],
+                 "message": "Awesome!"
+             };
+
+var level3 = {
+                  "words": ["after", "again", "because", "father", "mother", "funny", "under", "please", "soon", "pretty"],
+                  "message": "Fantastic job!"
+             };
+
+var colors = {
+                "words": ["red", "orange", "yellow", "green", "blue", "indigo", "violet", "purple", "white", "black" ],
+                "message": "You did it!"
+             };
+
+var animals = {
+                 "words": ["spider", "tiger", "goldfish", "parrot", "kitten", "puppy", "shark", "turtle", "horse", "monkey"],
+                 "message": "Great job!"
+
+              };
+
+var levels =   [ level1, level2, level3];
+
 //counter for the list of words
 var counter = 0;
-//start(0);
+//counter for the level
+var levelCounter = 0;
+
+//words in current level
+wordsInCurrentLevel = levels[levelCounter]["words"];
 
 //Event listener for submit button
 guessForm.addEventListener("submit", function (e) {
+    //wordsInCurrentLevel = levels[levelCounter]["words"];
     e = e || event; //workaround for IE
     e.preventDefault();
     var guess = guessInput.value;
-    if (guess != words[counter]) {
+    if (guess != wordsInCurrentLevel[counter]) {
         alert("That wasn't the word I was thinking of. Please enter another guess.");
         guessForm.reset();
     } else {
-        alert("You got it!");
+        alert("You got it!"); //TODO - have more messages
         guessForm.reset();
         counter++;
-        if (counter < words.length) {
+        if (counter < wordsInCurrentLevel.length) {
             ctx.fillStyle = "darkred";
             ctx.fill();
             start(counter);
         } else {
-            alert("Congratulations! You've guessed all the words!");
+            alert("Congratulations! You've guessed all the words! " + levels[levelCounter]["message"]);
+            levelCounter++;
+            if (levelCounter < levels.length && confirm("Want to play again?")) {
+                counter = 0;
+                wordsInCurrentLevel = levels[levelCounter]["words"];
+                ctx.fillStyle = "darkred";
+                ctx.fill();
+                start(counter);
+            }
+
         }
     }
 });
@@ -70,8 +110,7 @@ function start() {
 }
 
 function start(n){
-
-  var text = scramble(words[n]);
+  var text = scramble(wordsInCurrentLevel[n]);
   ctx.fillStyle = "wheat";
   ctx.fillText(text, x, y);
 
@@ -88,3 +127,6 @@ function scramble(word) {
     }
     return scrambledLetters;
 }
+
+
+
