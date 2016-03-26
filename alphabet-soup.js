@@ -105,12 +105,12 @@ guessForm.addEventListener("submit", function (e) {
     }
 });
 
-function start() {
-    console.log("starting");
-}
-
 function start(n){
   var text = scramble(wordsInCurrentLevel[n]);
+  while (text === wordsInCurrentLevel[n].toUpperCase())
+  {
+    text = scramble(wordsInCurrentLevel[n]);
+  }
   ctx.fillStyle = "wheat";
   ctx.fillText(text, x, y);
 
