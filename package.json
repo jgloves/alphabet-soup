@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/jgloves/alphabet-soup/issues"
   },
-  "homepage": "https://github.com/jgloves/alphabet-soup#readme"
+  "homepage": "https://github.com/jgloves/alphabet-soup#readme",
+  "dependencies": {
+    "express": "^4.13.4"
+  }
 }
