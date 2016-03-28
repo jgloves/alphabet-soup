@@ -1,10 +1,10 @@
 ## Game Logic
 
-This is a very cute word scrabble game for kids.
+This is a very cute scrabble word game for kids. The idea is to guess the scrabbled word. The game has various levels and themes to make it super fun for kids.
 
 ## Approach
 
-This game was written in Full-Stack JavaScript. For the front end, HTML5 Canvas and vanilla JavaScript was used. Drawing on the Canvas and game logic areimplemented without any libraries or frameworks. For the back-end, Express was used as a simple Node wrapper.
+This game is written in Full-Stack JavaScript. For the front end, HTML5 Canvas and vanilla JavaScript is used. Drawing on the Canvas and game logic are implemented without any libraries or frameworks. For the back-end, Express is used as a simple Node wrapper.
 
 ## Work in Progress
 
