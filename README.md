@@ -1,6 +1,6 @@
 ## Game Logic
 
-This is a very cute scrabble word game for kids. The idea is to guess the scrabbled word. The game has various levels and themes to make it super fun for kids.
+This is a very cute unscrambling word game for kids. The idea is to guess the scrambled word. The game has various levels and themes to make it super fun for kids.
 
 ## Approach
 
