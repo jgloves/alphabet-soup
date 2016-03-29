@@ -4,7 +4,7 @@ WebFontConfig = {
     loading: function(){start(0);},
 };
 
-(function(){
+(function() {
     var wf = document.createElement("script");
     wf.src = 'https://ajax.googleapis.com/ajax/libs/webfont/1.5.10/webfont.js';
     wf.async = 'true';
@@ -36,6 +36,20 @@ var y = c.height / 2;
 
 var guessInput = document.getElementById("guess-input");
 var guessForm = document.getElementById("guess-form");
+
+/* eventually won't need this
+
+ 1) Get JSON from our API
+
+ 2) Use it as an argument for however you start the game
+
+ 3) Make the level selection event-based (click the level)
+
+ 4) So the level selection thingy should create an ajax request to API
+
+ 5) Callback should drive (2)
+
+*/
 
 var level1 = {
                  "words": ["and", "like", "can", "for", "have", "here", "his", "her", "one", "with"],
@@ -105,7 +119,7 @@ guessForm.addEventListener("submit", function (e) {
     }
 });
 
-function start(n){
+function start(n) {
   var text = scramble(wordsInCurrentLevel[n]);
   while (text === wordsInCurrentLevel[n].toUpperCase())
   {
@@ -113,7 +127,6 @@ function start(n){
   }
   ctx.fillStyle = "wheat";
   ctx.fillText(text, x, y);
-
 }
 
 function scramble(word) {
